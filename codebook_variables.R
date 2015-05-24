@@ -1,22 +1,28 @@
 
 source("options.inc.R")
 
+#' Read the variables names in the tidy dataset and generate a description for each one.
+#' The text generated is targeted to be used in a GitHub MarkDown document.
+#'
+#' @param file  File containing the tidy dataset.
+#' @examples
+#'  codebook_variables()
 codebook_variables <- function(file = options.path.tidy_data)
 {
     tidy_data <- read.table(file, header = TRUE, nrows = 1)
 
     descriptions <- sapply(names(tidy_data), function(name) {
         if (name == "activity") {
-            return(paste0("- ", name, ": Activy name."))
+            return(paste0("- **", name, "**: Activy name (waliking, sitting, lying...)."))
         }
         else if (name == "subject") {
-            return(paste0("- ", name, ": Subject identifier."))
+            return(paste0("- **", name, "**: Subject identifier (an integer)."))
         }
 
         parts <- strsplit(name, ".", fixed = TRUE)
         parts <- unlist(parts)
 
-        text <- paste0("- ", name, ":")
+        text <- paste0("- **", name, "**:")
 
         if (parts[2] %in% c("mean", "meanFreq")) {
             text <- paste(text, "Mean")
