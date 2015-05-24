@@ -98,7 +98,7 @@ The list has been generated automatically using a helper R script called `codebo
 
 # How to load the tidy dataset
 
-The format when storing hte tidy dataset is done as per project assigment specifications.
+The format when storing the tidy dataset is done as per project assigment specifications.
 
 It can be read back doing:
 
